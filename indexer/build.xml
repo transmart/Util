@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project indexer">
+    <target name="init">
+        <mkdir dir="classes"/>
+        <delete file="bin/indexer.jar"/>
+    </target>
+    <target name="compile" depends="init">
+        <javac srcdir="src" destdir="classes">
+            <classpath>
+                <fileset dir="lib">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+    <target name="create_run_jar" depends="compile">
+        <jar destfile="bin/indexer.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Built-By" value="${user.name}"/>
+                <attribute name="Main-Class" value="com.recomdata.search.Indexer"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="classes"/>
+            <zipfileset excludes="META-INF/*.SF" src="lib/lucene-core-2.4.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="lib/lucene-demos-2.4.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="lib/lucene-highlighter-2.4.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="lib/tika-0.3-standalone.jar"/>
+        </jar>
+    </target>
+</project>
