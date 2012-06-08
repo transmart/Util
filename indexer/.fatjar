@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Thu Feb 05 14:46:37 EST 2009
+onejar.license.required=false
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=indexer.jar
+manifest.mergeall=false
+manifest.mainclass=com.recomdata.search.Indexer
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=
